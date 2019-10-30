@@ -1,0 +1,54 @@
+﻿Console.WriteLine("Id StoreKeeper: ");
+                                int KeeperId = 0;
+                                if (int.TryParse(Console.ReadLine(), out KeeperId))
+                                {
+                                    int check = 0;
+                                    var keepers = storeKeeperRepository.GetStoreKeeper();
+                                    foreach (var keeper in keepers)
+                                    {
+                                        if (keeper.Id == KeeperId)
+                                        {
+                                            check++;
+                                            break;
+                                        }
+                                    }
+                                    if (check > 0) 
+                                    { 
+                                        WayAdd.StoreKeeperId = KeeperId;
+                                        break;
+                                    }
+                                    else if(check<=0)
+                                    {
+                                        Console.WriteLine()
+                                    }
+
+
+
+
+									Waybill WayAdd = new Waybill();
+                            while (true)
+                            {
+
+                                Console.WriteLine("Выберете кладовщика");
+                                var keeperId = storeKeeperRepository.GetStoreKeeper() as List<StoreKeeper>;
+                                int chooseKeeper;
+                                if (int.TryParse(Console.ReadLine(), out chooseKeeper))
+                                {
+                                    --chooseKeeper;
+                                    if(chooseKeeper>=0&&chooseKeeper<keeperId.Count)
+                                    {
+                                        WayAdd.StoreKeeperId = keeperId[chooseKeeper].Id;
+                                        break;
+                                    }
+                                }
+
+
+
+
+
+                            }
+                            WayAdd.IsExport = false;
+                            Console.WriteLine("Id Provider");
+                            WayAdd.Provider = Console.ReadLine();
+                            WayAdd.DeliveryDate = DateTime.Now;
+                            break;

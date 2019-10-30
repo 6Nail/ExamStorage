@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\Scripts00001 - create table WayBills.sql" />
+    <None Remove="Scripts\Scripts00002 - create table Products.sql" />
+    <None Remove="Scripts\Scripts00003 - create table StoreKeepers.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Scripts00001 - create table WayBills.sql" />
+    <EmbeddedResource Include="Scripts\Scripts00002 - create table Products.sql" />
+    <EmbeddedResource Include="Scripts\Scripts00003 - create table StoreKeepers.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="dbup" Version="4.2.0" />
+  </ItemGroup>
+
+</Project>
